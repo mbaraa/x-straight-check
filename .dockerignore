@@ -1,0 +1,15 @@
+.DS_Store
+node_modules
+.env
+.env.*
+!.env.example
+x-straight-check
+assets/css/tailwind.css
+google-service-account.json
+views/**/*.go
+views/**/*.txt
+docker
+docker-compose.yml
+.github
+README.md
+tmp/
