@@ -1,0 +1,13 @@
+package views
+
+templ Error(msgs ...string) {
+	<ul class="font-mono font-bold text-red-500 list-inside space-y-2">
+		for _, msg := range msgs {
+			<li
+				class="font-mono font-bold bg-[#fcfcde] px-1 border-2 border-black text-red-700 space-y-2"
+			>
+				{ msg }
+			</li>
+		}
+	</ul>
+}

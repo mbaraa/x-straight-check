@@ -15,6 +15,7 @@ func init() {
 		Port:        getEnv("PORT"),
 		ApifyToken:  getEnv("APIFY_TOKEN"),
 		GeminiToken: getEnv("GEMINI_TOKEN"),
+		Version:     getEnv("VERSION"),
 	}
 }
 
@@ -22,6 +23,7 @@ type config struct {
 	Port        string
 	ApifyToken  string
 	GeminiToken string
+	Version     string
 }
 
 // Env returns the thing's config values :)

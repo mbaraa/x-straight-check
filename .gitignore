@@ -5,6 +5,7 @@ node_modules
 !.env.example
 x-straight-check
 assets/css/tailwind.css
+assets/js/htmx/*
 google-service-account.json
 views/**/*.go
 views/**/*.txt

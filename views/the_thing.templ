@@ -1,0 +1,75 @@
+package views
+
+templ TheThing() {
+	<div
+		id="container"
+		class="max-w-xl bg-[#c3c3c3] m-2 p-2 space-y-2 border-neutral-100 border-2 border-r-neutral-700 border-b-neutral-700 mx-auto"
+	>
+		<h1
+			class="text-xl text-white font-mono font-bold p-1 px-2"
+			style="background: radial-gradient(#04029b, #050369)"
+		>
+			<span class="italic">Hello, World</span> 👋
+		</h1>
+		<h1
+			class="text-xl text-white font-mono font-bold p-1 px-2"
+			style="background: radial-gradient(#04029b, #050369)"
+		>
+			<span class="italic">Check your straightness here!</span>
+		</h1>
+		<!--hx-on::after-request="this.reset()"-->
+		<form
+			hx-post="/api/check"
+			hx-target="#results"
+			hx-swap="innerHTML"
+			hx-indicator="#spinner"
+			class="mb-5 flex flex-col gap-2"
+		>
+			<div class="flex gap-3 flex-wrap items-center">
+				<input
+					type="text"
+					id="x_handle"
+					name="x_handle"
+					class="block grow-[6] p-2 text-gray-900 border-2 border-sky-500 px-2 py-1 font-mono"
+					minlength="1"
+					required
+					placeholder="Your X Handle..."
+				/>
+				<button
+					class="flex items-center gap-2 active:bg-[rgb(150,150,150)] hover:bg-[rgb(170,170,170)] px-2 py-1 border-2 border-neutral-100 border-r-neutral-700 border-b-neutral-700 active:border-neutral-700 active:border-r-neutral-100 active:border-b-neutral-100 bg-[rgb(204,204,204)] font-bold font-mono"
+					type="submit"
+				>
+					<img
+						class="inline-block h-6"
+						style="image-rendering: pixelated"
+						src="/assets/icons/starsg.gif"
+						alt="coffee"
+					/>
+					Check!
+				</button>
+			</div>
+		</form>
+		<div
+			id="spinner"
+			class="flex place-content-center select-none bg-neutral-100 border-2 border-neutral-700 border-r-neutral-200 border-b-neutral-200 hover:bg-neutral-200 p-2 px-4 my-2"
+		>
+			<svg
+				width="28"
+				height="28"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path
+					d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
+					opacity=".25"
+				></path>
+				<path
+					d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z"
+					class="spinner_ajPY"
+				></path>
+			</svg>
+		</div>
+		<!-- this element will get replaced by HTMX when we submit our form -->
+		<div id="results"></div>
+	</div>
+}

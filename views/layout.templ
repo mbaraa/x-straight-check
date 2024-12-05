@@ -1,0 +1,166 @@
+package views
+
+templ Layout(children ...templ.Component) {
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1"/>
+			<title>
+				Straightness Checker!
+			</title>
+			<link
+				rel="shortcut icon"
+				href="/assets/icons/favicon.png"
+				type="image/png"
+			/>
+			<meta
+				name="description"
+				content="Check your straightness on X!"
+			/>
+			<meta
+				name="og:description"
+				content="Check your straightness on X!"
+			/>
+			<meta
+				name="og:title"
+				content="Straightness Checker!"
+			/>
+			<meta name="keywords" content="x,x check,x straightness checker"/>
+			<script src="/assets/js/htmx/htmx.min.js"></script>
+			<script defer src="/assets/js/htmx/loading-states.js"></script>
+			<link href="/assets/css/tailwind.css" rel="stylesheet"/>
+		</head>
+		<body
+			style='
+      background-image: url("/assets/imgs/live_bg.gif"),
+        url("/assets/imgs/bg.webp"),
+        linear-gradient(to right, black, purple);
+      background-repeat: repeat;
+      padding: 0px;
+      margin: 0px;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 100dvh;
+    '
+		>
+			<div class="mx-auto px-2 container" hx-boost="true" id="app">
+				<header class="flex items-center gap-2 justify-center my-3">
+					<img
+						class="block h-10"
+						style="image-rendering: pixelated"
+						src="/assets/icons/cuppa0e.gif"
+						alt="coffee"
+					/>
+					<marquee
+						class="max-w-lg text-6xl border-x-2 font-bold font-serif text-yellow-600 drop-shadow-lg shadow-yellow-300"
+						direction="left"
+					>
+						STRAIGHTNESS CHECKER
+					</marquee>
+					<img
+						class="block h-10"
+						style="image-rendering: pixelated"
+						src="/assets/icons/coffee_set2c.gif"
+						alt="coffee"
+					/>
+				</header>
+				<img
+					src="/assets/icons/star_separator.gif"
+					class="mx-auto"
+					alt="separator"
+				/>
+				<main class="p-4 mt-4 mx-auto">
+					for _, child := range children {
+						@child
+					}
+				</main>
+				<footer>
+					<div
+						class="flex gap-2 flex-wrap justify-center space-x-2 p-4 mt-4 border bg-white/10 shadow-sm text-white"
+					>
+						<a href="https://htmx.org" target="_blank">
+							<img
+								class="inline-block h-10"
+								style="image-rendering: pixelated"
+								src="/assets/icons/createdwith.webp"
+								alt="PROUDLY MADE WITH HTMX AND GO"
+								title="PROUDLY MADE WITH HTMX AND GO"
+							/>
+						</a>
+						<a href="https://mbaraa.com" target="_blank">
+							<img
+								class="block h-10"
+								style="image-rendering: pixelated"
+								src="/assets/icons/button.gif"
+								alt="coffee"
+							/>
+						</a>
+						<img
+							class="block h-10"
+							style="image-rendering: pixelated"
+							src="/assets/icons/geocitieswww.gif"
+							alt="coffee"
+						/>
+						<img
+							class="block h-10"
+							style="image-rendering: pixelated"
+							src="/assets/icons/worldwideweb_badge.gif"
+							alt="coffee"
+						/>
+						<a href="https://buymeacoffee.com/mbaraa" target="_blank">
+							<img
+								class="block h-10"
+								style="image-rendering: pixelated"
+								src="/assets/icons/dollarspindownd.gif"
+								alt="coffee"
+							/>
+						</a>
+						<img
+							class="block h-10"
+							style="image-rendering: pixelated"
+							src="/assets/icons/rotating_square.gif"
+							alt="coffee"
+						/>
+						<div class="flex place-content-center items-center bg-black p-2">
+							<img
+								class="h-5 w-5 mx-1"
+								src="/assets/icons/github.webp"
+								alt="source code"
+							/>
+							<p>
+								<a
+									class="text-sm underline font-mono text-white"
+									href="https://github.com/mbaraa/x-straight-check"
+									target="_blank"
+								>Source code</a>
+							</p>
+						</div>
+						<img
+							class="inline-block h-10"
+							style="image-rendering: pixelated"
+							src="/assets/icons/fastweb.gif"
+							alt="coffee"
+						/>
+						<img
+							class="inline-block h-10"
+							style="image-rendering: pixelated"
+							src="/assets/icons/fairlite.gif"
+							alt="coffee"
+						/>
+					</div>
+					<div
+						class="max-w-sm text-center mx-auto opacity-20 hover:opacity-100 transition duration-500"
+					>
+						<p
+							class="font-mono font-bold bg-[#fcfcde] px-1 border-2 border-black text-black mt-4"
+						>
+							version:
+							<a class="italic" href="https://github.com/mbaraa/x-straight-check">{ ctx.Value("version").(string) }</a>
+						</p>
+					</div>
+				</footer>
+			</div>
+		</body>
+	</html>
+}

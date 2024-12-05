@@ -1,0 +1,23 @@
+package views
+
+import (
+	"fmt"
+	"x-straight-check/pkg/gemini"
+)
+
+templ AnalysisResult(res gemini.UserStraightnessAnalysis) {
+	<ul class="font-mono font-bold bg-[#fcfcde] px-1 border-2 border-black text-green-700 space-y-2 list-inside list-disc">
+		<li>
+			Score: { fmt.Sprintf("%.2f", 100.0*res.Straightness) }&percnt;
+		</li>
+		<li>
+			Excerpt: { res.ReasonOfScore }
+		</li>
+	</ul>
+}
+
+templ SuccessMsg(msg string) {
+	<p class="font-mono font-bold bg-[#fcfcde] px-1 border-2 border-black text-green-700 space-y-2">
+		{ msg }
+	</p>
+}

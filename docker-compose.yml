@@ -8,8 +8,9 @@ services:
     ports:
       - "20269:3000"
     stdin_open: true
-    env_file:
-      - .env.docker
+    environment:
+      - VERSION=${COMMIT_SHA}
+    env_file: .env.docker
     networks:
       - xstraightchecknetwork
 

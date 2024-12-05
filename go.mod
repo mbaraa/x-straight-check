@@ -3,6 +3,7 @@ module x-straight-check
 go 1.23.3
 
 require (
+	github.com/a-h/templ v0.2.793
 	github.com/google/generative-ai-go v0.19.0
 	google.golang.org/api v0.210.0
 )

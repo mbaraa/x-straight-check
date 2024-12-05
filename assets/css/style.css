@@ -2,24 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-.loader {
-  height: 100%;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  border-width: 6px;
-  border-style: solid;
-  border-color: var(--secondary-color);
-  border-top-color: transparent;
-  border-top-width: 2px;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  margin: 5px;
+:not(.htmx-request) #spinner:not(.htmx-request) {
+  display: none;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
+.spinner_ajPY {
+  transform-origin: center;
+  animation: spinner_AtaB 0.75s infinite linear;
+}
+@keyframes spinner_AtaB {
   100% {
     transform: rotate(360deg);
   }

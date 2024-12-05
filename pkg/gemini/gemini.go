@@ -63,7 +63,7 @@ Make the output in strict JSON format with the following structure:
 
 where:
  - "straightness" is a numeric value between 0.000 and 1.000 (with three decimal places).
- - "reason_of_score" is a string providing a PG-13 explanation for the score.`,
+ - "reason_of_score" is a string providing a PG-13 explanation for the score under 240 character.`,
 		user.Name,
 		user.UserName,
 		user.Description,
