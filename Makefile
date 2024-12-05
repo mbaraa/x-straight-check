@@ -2,16 +2,15 @@
 
 BINARY_NAME=x-straight-check
 
-build:
+build: generate
 	npm i && \
 	go mod tidy && \
-	go generate && \
 	go build -ldflags="-w -s" -o $(BINARY_NAME)
 
 generate:
 	templ generate
 
-dev: generate clean build tailwindcss-build
+dev: clean build tailwindcss-build
 	./$(BINARY_NAME)
 
 setup: tailwindcss-init
