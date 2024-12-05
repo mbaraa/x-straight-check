@@ -6,7 +6,7 @@ services:
     image: "x-straight-check-app"
     restart: "always"
     ports:
-      - "20269:3000"
+      - "20269:8080"
     stdin_open: true
     environment:
       - VERSION=${COMMIT_SHA}
