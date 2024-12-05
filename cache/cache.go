@@ -34,7 +34,7 @@ func SetWithTTL(key, value string, ttl time.Duration) error {
 
 func Get(key string) (value string, err error) {
 	value, err = redisClient.Get(ctx, key).Result()
-	if err == redis.Nil {
+	if err == redis.Nil || value == "" {
 		log.Errorf("Key \"%s\" was not found. Key is either expired or not registered.", key)
 		return
 	} else if err != nil {

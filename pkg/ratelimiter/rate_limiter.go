@@ -45,6 +45,7 @@ noResp:
 
 	resJson, err := json.Marshal(*res)
 	if err != nil {
+		log.Errorf("Failed marshalling json, %v\n", err)
 		return nil, err
 	}
 
@@ -52,6 +53,7 @@ noResp:
 
 	err = cache.SetWithTTL(key, string(encResJson), time.Hour*3)
 	if err != nil {
+		log.Errorf("Failed setting cache, %v\n", err)
 		return nil, err
 	}
 
