@@ -1,7 +1,6 @@
 package ratelimiter
 
 import (
-	"encoding/base64"
 	"encoding/json"
 	"time"
 	"x-straight-check/cache"
@@ -16,13 +15,7 @@ func GetUserAnalysis(username, lang string) (*gemini.UserStraightnessAnalysis, e
 
 	cachedRes, err := cache.Get(key)
 	if err == nil {
-		decRes, err := base64.StdEncoding.DecodeString(cachedRes)
-		if err != nil {
-			log.Errorf("Failed decoding cached response, %v\n", err)
-			goto noResp
-		}
-
-		err = json.Unmarshal([]byte(decRes), res)
+		err = json.Unmarshal([]byte(cachedRes), res)
 		if err != nil {
 			log.Errorf("Failed unmarshalling decoded cached response, %v\n", err)
 			goto noResp
@@ -43,15 +36,13 @@ noResp:
 		return nil, err
 	}
 
-	resJson, err := json.Marshal(*res)
+	resJson, err := json.Marshal(res)
 	if err != nil {
 		log.Errorf("Failed marshalling json, %v\n", err)
 		return nil, err
 	}
 
-	encResJson := base64.StdEncoding.EncodeToString(resJson)
-
-	err = cache.SetWithTTL(key, string(encResJson), time.Hour*3)
+	err = cache.SetWithTTL(key, string(resJson), time.Hour*3)
 	if err != nil {
 		log.Errorf("Failed setting cache, %v\n", err)
 		return nil, err
