@@ -86,7 +86,7 @@ func GetUserPosts(username, lang string, postsCount int16) ([]XPost, XUser, erro
 		return nil, XUser{}, err
 	}
 
-	resp, err := http.Post(fmt.Sprintf("https://api.apify.com/v2/acts/apidojo~tweet-scraper/run-sync-get-dataset-items?token=%s&timeout=30", config.Env().ApifyToken), "application/json", respBodyBuf)
+	resp, err := http.Post(fmt.Sprintf("https://api.apify.com/v2/acts/apidojo~tweet-scraper/run-sync-get-dataset-items?token=%s&timeout=30&memory=256", config.Env().ApifyToken), "application/json", respBodyBuf)
 	if err != nil {
 		return nil, XUser{}, err
 	}
