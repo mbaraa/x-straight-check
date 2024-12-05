@@ -26,7 +26,7 @@ func init() {
 func SetWithTTL(key, value string, ttl time.Duration) error {
 	err := redisClient.Set(ctx, key, value, ttl).Err()
 	if err != nil {
-		log.Errorf("setting the key \"%s\" with the value \"%s\" failed.", key, value)
+		log.Errorf("setting the key \"%s\" with the value \"%s\" failed, %v\n", key, value, err)
 		return err
 	}
 	return nil
@@ -46,7 +46,7 @@ func Get(key string) (value string, err error) {
 func Del(key string) error {
 	_, err := redisClient.Del(ctx, key).Result()
 	if err != nil {
-		log.Errorf("Key \"%s\" was not deleted. Key is either expired or not registered.", key)
+		log.Errorf("Key \"%s\" was not deleted. Key is either expired or not registered, %v\n", key, err)
 		return err
 	}
 	return nil
