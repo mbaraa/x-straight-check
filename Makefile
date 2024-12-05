@@ -1,4 +1,4 @@
-.PHONY: setup build
+all: setup build
 
 BINARY_NAME=x-straight-check
 
