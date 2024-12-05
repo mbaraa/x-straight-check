@@ -10,7 +10,7 @@ RUN go install github.com/a-h/templ/cmd/templ@latest &&\
 FROM alpine:latest AS run
 
 WORKDIR /app
-COPY --from=build /x-straight-check .
+COPY --from=build /app/x-straight-check .
 
 EXPOSE 8080
 
