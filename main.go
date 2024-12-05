@@ -15,7 +15,11 @@ var assets embed.FS
 
 func main() {
 	ctx := context.Background()
-	ctx = context.WithValue(ctx, "version", config.Env().Version)
+	version := config.Env().Version
+	if len(version) >= 7 {
+		version = version[:7]
+	}
+	ctx = context.WithValue(ctx, "version", version)
 
 	http.Handle("/assets/", http.FileServer(http.FS(assets)))
 
