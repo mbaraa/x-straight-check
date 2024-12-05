@@ -5,8 +5,7 @@ import (
 	"embed"
 	"net/http"
 	"x-straight-check/config"
-	"x-straight-check/pkg/gemini"
-	"x-straight-check/pkg/xscraper"
+	"x-straight-check/pkg/ratelimiter"
 	"x-straight-check/views"
 )
 
@@ -33,15 +32,10 @@ func main() {
 			views.Error("Empty X Handle!").Render(ctx, w)
 			return
 		}
-
-		posts, user, err := xscraper.GetUserPosts(xHandle, "en", 35)
+		res, err := ratelimiter.GetUserAnalysis(xHandle, "en")
 		if err != nil {
-			panic(err)
-		}
-
-		res, err := gemini.CheckUserStraightness(posts, user)
-		if err != nil {
-			panic(err)
+			views.Error("Internal server error").Render(ctx, w)
+			return
 		}
 
 		views.AnalysisResult(*res).Render(ctx, w)

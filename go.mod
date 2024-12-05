@@ -5,6 +5,7 @@ go 1.22.0
 require (
 	github.com/a-h/templ v0.2.793
 	github.com/google/generative-ai-go v0.19.0
+	github.com/redis/go-redis/v9 v9.7.0
 	google.golang.org/api v0.210.0
 )
 
@@ -15,6 +16,8 @@ require (
 	cloud.google.com/go/auth/oauth2adapt v0.2.6 // indirect
 	cloud.google.com/go/compute/metadata v0.5.2 // indirect
 	cloud.google.com/go/longrunning v0.5.7 // indirect
+	github.com/cespare/xxhash/v2 v2.3.0 // indirect
+	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect

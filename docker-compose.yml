@@ -14,5 +14,16 @@ services:
     networks:
       - xstraightchecknetwork
 
+  cache:
+    image: "redis:7"
+    env_file:
+      - .env.docker
+    command: >
+      --requirepass ${REDIS_PASSWORD}
+    ports:
+      - 6379
+    networks:
+      - xstraightchecknetwork
+
 networks:
   xstraightchecknetwork: {}

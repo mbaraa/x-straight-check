@@ -16,6 +16,13 @@ func init() {
 		ApifyToken:  getEnv("APIFY_TOKEN"),
 		GeminiToken: getEnv("GEMINI_TOKEN"),
 		Version:     getEnv("VERSION"),
+		Cache: struct {
+			Address  string
+			Password string
+		}{
+			Address:  getEnv("REDIS_ADDRESS"),
+			Password: getEnv("REDIS_PASSWORD"),
+		},
 	}
 }
 
@@ -24,6 +31,10 @@ type config struct {
 	ApifyToken  string
 	GeminiToken string
 	Version     string
+	Cache       struct {
+		Address  string
+		Password string
+	}
 }
 
 // Env returns the thing's config values :)
